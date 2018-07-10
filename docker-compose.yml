@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: ./build
+      dockerfile: web.dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/var/www
+
+  app:
+    build: 
+      context: ./build
+      dockerfile: php.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./app:/var/www
